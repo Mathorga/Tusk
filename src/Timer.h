@@ -1,5 +1,5 @@
-#ifndef __TIMER_RICCI__
-#define __TIMER_RICCI__
+#ifndef __TIMER__
+#define __TIMER__
 
 class Timer {
   public:
