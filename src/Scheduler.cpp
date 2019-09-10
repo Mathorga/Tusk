@@ -4,13 +4,13 @@ namespace Tusk {
     void Scheduler::init(int period) {
         this->period = period;
         this->timer->setupPeriod(period);
-        this->nTasks = 0;
+        this->tasksNum = 0;
     }
 
     bool Scheduler::addTask(Task* task) {
-        if (nTasks < MAX_TASKS - 1) {
-            taskList[nTasks] = task;
-            nTasks++;
+        if (this->tasksNum < MAX_TASKS - 1) {
+            this->tasks[this->tasksNum] = task;
+            this->tasksNum++;
             return true;
         } else {
             return false; 
@@ -18,9 +18,9 @@ namespace Tusk {
     }
 
     void Scheduler::schedule() {
-        timer->waitForNextTick();
-        for (int i = 0; i < nTasks; i++) {
-            taskList[i]->tick();
+        this->timer->waitForNextTick();
+        for (int i = 0; i < this->tasksNum; i++) {
+            this->tasks[i]->tick();
         }
     }
 }
