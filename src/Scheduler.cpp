@@ -1,9 +1,9 @@
 #include "Scheduler.h"
 
 namespace Tusk {
-    void Scheduler::init(int period) {
-        this->period = period;
-        this->timer->setupPeriod(period);
+    void Scheduler::init(int basePeriod) {
+        this->basePeriod = basePeriod;
+        this->timer.setupPeriod(basePeriod);
         this->tasksNum = 0;
     }
 
@@ -13,14 +13,16 @@ namespace Tusk {
             this->tasksNum++;
             return true;
         } else {
-            return false; 
+            return false;
         }
     }
 
     void Scheduler::schedule() {
-        this->timer->waitForNextTick();
+        this->timer.waitTick();
         for (int i = 0; i < this->tasksNum; i++) {
-            this->tasks[i]->tick();
+            if (this->tasks[i]->update(this->basePeriod)) {
+                this->tasks[i]->tick();
+            }
         }
     }
 }

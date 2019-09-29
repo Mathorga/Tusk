@@ -73,7 +73,7 @@ namespace Tusk {
         sei();
     }
 
-    void Timer::waitForNextTick(){
+    void Timer::waitTick(){
         // Wait for timer signal.
         while (!timerFlag) {}
 

@@ -9,16 +9,16 @@
 namespace Tusk {
     class Scheduler {
     public:
-        void init(int period);
+        void init(int basePeriod);
         virtual bool addTask(Task* task);
         virtual void schedule();
 
     private:
         static bool ready;
-        int period;
+        int basePeriod;
         int tasksNum;
         Task* tasks[MAX_TASKS];
-        Timer* timer;
+        Timer timer;
     };
 }
 

@@ -19,9 +19,7 @@ namespace Tusk {
         Timer();
         void setupFrequency(int frequency);
         void setupPeriod(int period);
-        void waitForNextTick();
-    private:
-        bool flag;
+        void waitTick();
     };
 }
 
