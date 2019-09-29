@@ -16,8 +16,8 @@ namespace Tusk {
     private:
         static bool ready;
         int period;
-        int nTasks;
-        Task* taskList[MAX_TASKS];
+        int tasksNum;
+        Task* tasks[MAX_TASKS];
         Timer* timer;
     };
 }

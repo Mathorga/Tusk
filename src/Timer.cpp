@@ -11,7 +11,7 @@ namespace Tusk {
         timerFlag = false;
     }
 
-    void Timer::setupFreq(int frequency) {
+    void Timer::setupFrequency(int frequency) {
         // Disable interrupts.
         cli();
 
