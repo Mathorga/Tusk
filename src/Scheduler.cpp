@@ -1,14 +1,18 @@
 #include "Scheduler.h"
 
 namespace Tusk {
+    const int Scheduler::MAX_TASKS_NUM = 10;
+
     void Scheduler::init(int basePeriod) {
         this->basePeriod = basePeriod;
         this->timer.setupPeriod(basePeriod);
         this->tasksNum = 0;
+        this->tasks = (Task**) malloc(MAX_TASKS_NUM * sizeof(Task*));
     }
 
     bool Scheduler::addTask(Task* task) {
-        if (this->tasksNum < MAX_TASKS - 1) {
+        // Check if the new task does not exceed the maximum task number.
+        if (this->tasksNum < MAX_TASKS_NUM - 1) {
             this->tasks[this->tasksNum] = task;
             this->tasksNum++;
             return true;
