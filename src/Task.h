@@ -35,6 +35,10 @@ namespace Tusk {
                 return false;
             }
         }
+
+        int getPeriod() {
+            return this->period;
+        }
     private:
         int period;
         int elapsedTime;

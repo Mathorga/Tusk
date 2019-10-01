@@ -11,13 +11,21 @@ namespace Tusk {
     }
 
     bool Scheduler::addTask(Task* task) {
+        bool result = true;
+
         // Check if the new task does not exceed the maximum task number.
         if (this->tasksNum < MAX_TASKS_NUM - 1) {
-            this->tasks[this->tasksNum] = task;
-            this->tasksNum++;
-            return true;
+            // Check if task's period is compatible with base period.
+            // Base period need to be the greatest common divisor of all the tasks it manages.
+            //TODO Dynamically adjust the base period according to all the added tasks.
+            if (task->getPeriod % this->basePeriod == 0) {
+                this->tasks[this->tasksNum] = task;
+                this->tasksNum++;
+            } else {
+                result = false;
+            }
         } else {
-            return false;
+            result = false;
         }
     }
 

@@ -19,6 +19,8 @@ namespace Tusk {
         static bool ready;
         int basePeriod;
         int tasksNum;
+        // Since Task is an abstract class, every specific task may have a different size, so the array containing all
+        // the tasks can't be contiguous.
         Task** tasks;
         Timer timer;
     };
