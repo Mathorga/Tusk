@@ -18,7 +18,7 @@ namespace Tusk {
             // Check if task's period is compatible with base period.
             // Base period need to be the greatest common divisor of all the tasks it manages.
             //TODO Dynamically adjust the base period according to all the added tasks.
-            if (task->getPeriod % this->basePeriod == 0) {
+            if (task->getPeriod() % this->basePeriod == 0) {
                 this->tasks[this->tasksNum] = task;
                 this->tasksNum++;
             } else {
