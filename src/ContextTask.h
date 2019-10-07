@@ -1,3 +1,14 @@
+/*
+********************************************************************************
+ContextTask.h
+
+This class defines the default interface for a Task object that can handle a
+context.
+
+Copyright (C) 2019 Luka Micheletti
+********************************************************************************
+*/
+
 #ifndef __CONTEXT_TASK__
 #define __CONTEXT_TASK__
 
