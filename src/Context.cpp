@@ -1,36 +1,38 @@
 #include "Context.h"
 
 namespace Tusk {
-    const int Context::MAX_TASKS_NUM = 10;
+    const int Context::MAX_PRODUCERS_NUM = 10;
 
     Context::Context() {
-        this->tasks = (Task**) malloc(MAX_TASKS_NUM * sizeof(Task*));
+        this->producers = (Producer**) malloc(MAX_PRODUCERS_NUM * sizeof(Producer*));
     }
 
-    bool Context::addTask(Task* task) {
-        bool result = true;
+    bool Context::addProducer(Producer* task) {
+        bool result = false;
 
-        // Check if the new task does not exceed the maximum task number.
-        if (this->tasksNum < MAX_TASKS_NUM - 1) {
-            // Check if task's period is compatible with base period.
-            // Base period need to be the greatest common divisor of all the tasks it manages.
-            //TODO Dynamically adjust the base period according to all the added tasks.
-            if (task->getPeriod() % this->basePeriod == 0) {
-                this->tasks[this->tasksNum] = task;
-                this->tasksNum++;
-            } else {
-                result = false;
-            }
-        } else {
-            result = false;
+        // Check if the new task does not exceed the maximum producers number.
+        if (this->producersNum < MAX_PRODUCERS_NUM - 1) {
+            this->producers[this->producersNum] = task;
+            this->producersNum++;
+            result = true;
         }
+
+        return result;
     }
 
-    Task* Context::getTaskAt(int index) {
+    Producer* Context::getProducerAt(int index) {
+        // Producer* result = nullptr;
+        //
+        // if (index < this->producersNum) {
+        //     result = this->producers[index];
+        // }
+        //
+        // return result;
 
+        return index < this->producersNum ? this->producers[index] : nullptr;
     }
 
-    Task** Context::getTasks() {
-
+    Producer** Context::getProducers() {
+        return this->producers;
     }
 }

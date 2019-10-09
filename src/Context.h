@@ -1,21 +1,21 @@
 #ifndef __CONTEXT__
 #define __CONTEXT__
 
-#include "Task.h"
+#include "Producer.h"
+#include "Arduino.h"
 
 namespace Tusk {
     class Context {
     public:
-        static const int MAX_TASKS_NUM;
+        static const int MAX_PRODUCERS_NUM;
 
         Context();
-        bool addTask(Task* task);
-        Task* getTaskAt(int index);
-        Task** getTasks();
+        bool addProducer(Producer* task);
+        Producer* getProducerAt(int index);
+        Producer** getProducers();
     private:
-        //TODO Don't use Task, use ProducerTask or something like this.
-        Task** tasks;
-        int tasksNum;
+        Producer** producers;
+        int producersNum;
     };
 }
 

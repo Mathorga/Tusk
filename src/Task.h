@@ -12,8 +12,6 @@ Copyright (C) 2019 Luka Micheletti
 #ifndef __TASK__
 #define __TASK__
 
-#include "Context.h"
-
 namespace Tusk {
     class Task {
     public:
