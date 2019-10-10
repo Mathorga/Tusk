@@ -1,3 +1,13 @@
+/*
+********************************************************************************
+Context.h
+
+This class defines the default way of sharing information between tasks.
+
+Copyright (C) 2019 Luka Micheletti
+********************************************************************************
+*/
+
 #ifndef __CONTEXT__
 #define __CONTEXT__
 
